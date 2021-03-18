@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+        <script>
+            let createDir = async()=>{
+                document.write("New page")
+            }
+        </script>
+        <style>
+            #cancelBtn{
+                background-color:white;
+                width: fit-content;
+                border: none ;
+                color: rgb(7, 89, 243);
+                position: absolute;
+                right: 25%;
+                font: size 10%;;
+            }
+            #createDBtn{
+                background-color: rgb(7, 89, 243);
+                color: aliceblue;
+                width: fit-content; 
+                position: absolute;
+                right: 30%; 
+                border-radius: 5px;
+            }
+            .column {
+                float: left;
+                width: 50%;
+            }
+            .row:after { 
+                content: "";
+                display: table;
+                clear: both;
+            }
+            #directType {
+                padding-right: 40%;
+                padding-top: 1.5%;
+                padding-bottom: 1.5%;
+                background-color: rgba(219, 226, 226, 0.301);
+                border-color:  rgba(44, 46, 46, 0.301);
+            }
+            .pad{
+                padding-top: 1.5%;
+            }
+            .tpad{
+                padding-top: 2%;
+            }
+            #dpad{
+                height: 150px;
+            }
+            input {
+                padding: 6px 6px;
+                width: 50%;
+                background-color: rgba(219, 226, 226, 0.301);
+                border-color:  rgba(44, 46, 46, 0.301);
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form>
+                <div style="background-color: rgba(240, 246, 247, 0.856); text-align: center; padding-bottom: 30px; padding-top: 30px;">
+                    <h2>Create Directory</h2>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="padding-left: 50%; padding-top: 10px; color: rgb(87, 80, 80);">Directory Type</h4>
+                    </div>
+                    <div class="column pad">
+                        <form>
+                            <select id="directType">
+                                <option value="faceook">Facebook</option>
+                                <option value="gmail">Gmail</option>
+                                <option value="twitter">Twitter</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="padding-left: 50%; padding-top: 15px; color: rgb(87, 80, 80);">Name *</h4>
+                    </div>
+                    <div class="column tpad">
+                        <form>
+                            <input type="text" name="name" placeholder="Facebook Login">
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="padding-left: 50%; padding-top: 15px; color: rgb(87, 80, 80);">Description</h4>
+                    </div>
+                    <div class="column tpad">
+                        <form>
+                            <input id="dpad" type="text" name="description" placeholder="">
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="padding-left: 50%; padding-top: 15px; color: rgb(87, 80, 80);">Status</h4>
+                    </div>
+                    <div class="column pad">
+                        <form>
+                            <select id="id_select2_example" style="padding-right: 15%;">
+                                <option data-img_src='./png-transparent-check-mark-computer-icons-green-tick-mark-angle-text-logo.png'
+                                    value="enabled">
+                                    Enabled
+                                </option>
+                                <option data-img_src="./images.png" value="disabled">
+                                    Disabled
+                                </option>
+                            </select>
+                            
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+                            <script type="text/javascript">
+                                function custom_template(obj) {
+                                    var data = $(obj.element).data();
+                                    var text = $(obj.element).text();
+                                    if (data && data['img_src']) {
+                                        img_src = data['img_src'];
+                                        template = $("<div><img src=\"" + img_src + "\" style=\"width:20%;height:20px;\"/>" + text + "</div>");
+                                        return template;
+                                    }
+                                }
+                                var options = {
+                                    'templateSelection': custom_template,
+                                    'templateResult': custom_template,
+                                }
+                                $('#id_select2_example').select2(options);
+                                $('.select2-container--default .select2-selection--single').css({ 'height': '25px' });
+
+                            </script>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="padding-left: 50%; padding-top: 15px; color: rgb(87, 80, 80);">Facebook client ID *</h4>
+                    </div>
+                    <div class="column tpad">
+                        <form>
+                            <input type="text" name="clientId" placeholder="Enter your client ID">
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 style="padding-left: 50%; padding-top: 15px; color: rgb(87, 80, 80);">Facebook client Secret *</h4>
+                    </div>
+                    <div class="column tpad">
+                        <form>
+                            <input type="password" name="clientSecret" placeholder="Enter your client Secret">
+                        </form>
+                    </div>
+                </div>
+                <div style="padding-top: 2%;">
+                    <div class="row">
+                        <div class="column">
+                            <p></p>
+                        </div>
+                        <div class="column">
+                            <form">
+                                <input type="button" value="Create Directory" id="createDBtn" onclick=createDir()>
+                                <form action="https://www.google.com">
+                                    <input type="submit" value="Cancel" id="cancelBtn">
+                                </form>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
